@@ -1,0 +1,90 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+import java.lang.*;
+
+class Result {
+
+    /*
+     * Complete the 'pickingNumbers' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY a as parameter.
+     */
+
+    public static int pickingNumbers(List<Integer> a) {
+    // Write your code here
+    int tot=0;
+    Integer arr[]=a.toArray(new Integer[a.size()]);
+    for(int i=0;i<arr.length;i++)
+    {
+        int count1=0,count2=0,res=0,eq=0;
+        
+        for(int j=i+1;j<arr.length;j++)
+        {
+            if(arr[j]==arr[i]-1)
+            {
+                count1++;
+            }
+            else if(arr[j]==arr[i]+1)
+            {
+                count2++;
+            }
+            else if(arr[j]==arr[i])
+            {
+                eq++;
+            }
+            
+        }
+        if(count1>count2)
+        {
+            res=count1+eq+1;       
+        }
+        else
+        {
+            res=count2+eq+1;
+        }
+        if(res>tot)
+        {
+            tot=res;
+        }
+    
+    
+    
+    
+
+    }
+    return tot;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+        String[] aTemp = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        List<Integer> a = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int aItem = Integer.parseInt(aTemp[i]);
+            a.add(aItem);
+        }
+
+        int result = Result.pickingNumbers(a);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}

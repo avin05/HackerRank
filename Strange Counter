@@ -1,0 +1,23 @@
+ static long strangeCounter(long t) {
+        long val=3,time=1,initial=3,res=0;
+        
+        while(time<=t)
+        {
+            
+            time++;
+            val--;
+            res=val;
+            if(val<1)
+            {
+                initial=initial*2;
+                res=val;
+                val=initial;
+            }
+        }
+        
+        return (res+1);
+        
+        
+
+
+    }

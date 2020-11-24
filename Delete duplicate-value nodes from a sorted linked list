@@ -1,0 +1,31 @@
+static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode head) {
+        if(head.next==null)
+            return head;
+            
+       SinglyLinkedListNode temp=head;
+       int n=temp.data;
+       SinglyLinkedListNode prev=head;
+       temp=temp.next;
+       while(temp!=null){
+           if(temp.data!=n){
+               n=temp.data;
+               prev=temp;
+               temp=temp.next;
+               
+           }
+           else{
+               prev.next=temp.next;
+               
+               
+               temp=temp.next;
+               
+           }
+           
+           
+       }
+       return head;
+       
+        
+
+
+    }
